@@ -24,8 +24,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: poetry install --no-interaction
-      - name: Publish
+      - name: Convert visualize script to Jupyter Notebook
+        run: ./.venv/bin/ipynb-py-convert visualize.py visualize.ipynb
+      - name: Update data
         run: ./.venv/bin/python3 ./app.py
+      - name: Generate visualization html
+        run: ./.venv/bin/jupyter nbconvert --output-dir='doc' --to html visualize.ipynb
       - name: Commit files
         run: |
           git config --local user.email "bankruptko@protonmail.com"
@@ -37,7 +41,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: output

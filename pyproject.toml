@@ -9,6 +9,9 @@ license = "MIT License"
 python = "^3.9"
 pandas = "^1.2.4"
 openpyxl = "^3.0.7"
+jupyterlab = "^3.0.16"
+ipynb-py-convert = "^0.4.6"
+plotly = "^4.14.3"
 
 [tool.poetry.dev-dependencies]
 black = "^21.5b1"
