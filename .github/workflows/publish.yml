@@ -35,7 +35,9 @@ jobs:
           git config --local user.email "bankruptko@protonmail.com"
           git config --local user.name "bankruptko"
           git add ./data
-          git commit -am "Update data files"
+          git add ./doc
+          git add ./visualize.ipynb
+          git commit -am "Update data and visualization"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
