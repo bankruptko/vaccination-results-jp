@@ -16,11 +16,12 @@ def read_kantei_vaccination_excel(uri: str) -> pd.DataFrame:
         index_col=0,
         skiprows=4,
         skipfooter=6,
-    ).sort_index(ascending=True)
+    )
     return df
 
 
 def add_cumsum(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.sort_index(ascending=True)
     df["injected_total"] = df["injected"].cumsum()
     df["injected_1st_total"] = df["injected_1st"].cumsum()
     df["injected_2nd_total"] = df["injected_2nd"].cumsum()
