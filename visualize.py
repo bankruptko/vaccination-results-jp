@@ -48,7 +48,7 @@ fig.show()
 # %%
 _df = df[(df["injected_iryo"] > 0) & (df["injected_korei"] > 0)]
 fig = go.Figure()
-fig.layout.update({"title": "医療従事者+高齢者 日別ワクチン摂取回数"})
+fig.layout.update({"title": "医療従事者+高齢者 日別ワクチン摂取回数（どちらも0でない日のみ表示）"})
 fig.layout.xaxis.update({"title": "日付"})
 fig.layout.yaxis.update({"title": "摂取回数"})
 fig.add_traces(
@@ -83,7 +83,7 @@ fig.show()
 # %%
 _df = df[df["injected_iryo"] > 0]
 fig = go.Figure()
-fig.layout.update({"title": "医療従事者 累計ワクチン摂取回数（どちらも0でない日のみ表示）"})
+fig.layout.update({"title": "医療従事者 累計ワクチン摂取回数"})
 fig.layout.xaxis.update({"title": "日付"})
 fig.layout.yaxis.update({"title": "摂取回数"})
 fig.add_traces(
