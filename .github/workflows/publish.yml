@@ -18,13 +18,14 @@ jobs:
       - name: Install Poetry
         run: |
           curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+          poetry config virtualenvs.in-project true
       - name: Add path for Poetry
         run: echo "~/.poetry/bin" >> $GITHUB_PATH
       - uses: actions/checkout@v2
       - name: Install Dependencies
         run: poetry install --no-interaction
       - name: Publish
-        run: python3 ./app.py
+        run: ./.venv/bin/python3 ./app.py
       - name: Commit files
         run: |
           git config --local user.email "bankruptko@protonmail.com"
