@@ -16,7 +16,7 @@ def read_kantei_vaccination_excel(uri: str) -> pd.DataFrame:
         index_col=0,
         skiprows=4,
         skipfooter=6,
-    )
+    ).sort_index(ascending=True)
     return df
 
 
@@ -46,7 +46,6 @@ df = (
     )
     .fillna(0)
     .astype(int)
-    .sort_index(ascending=True)
 )
 
 # 合算処理
