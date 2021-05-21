@@ -5,8 +5,8 @@ on:
   workflow_dispatch: {}
   push:
     paths:
-      - .github/workflows/publish.yml
-      - ./app.py
+      - '*'
+      - '!data'
 jobs:
   publish:
     runs-on: ubuntu-latest
