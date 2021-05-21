@@ -57,8 +57,3 @@ df = add_cumsum(df)
 
 os.makedirs("data", exist_ok=True)
 df.to_csv("data/data.csv")
-
-# GitHub Pages
-os.makedirs("output", exist_ok=True)
-with open("./output/index.html", mode="w") as f:
-    f.write("<html><body>yo</body></html>")
