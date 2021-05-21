@@ -20,12 +20,21 @@ def read_kantei_vaccination_excel(uri: str) -> pd.DataFrame:
     return df
 
 
+def add_cumsum(df: pd.DataFrame) -> pd.DataFrame:
+    df["injected_total"] = df["injected"].cumsum()
+    df["injected_1st_total"] = df["injected_1st"].cumsum()
+    df["injected_2nd_total"] = df["injected_2nd"].cumsum()
+    return df
+
+
 df_iryo = read_kantei_vaccination_excel(
     "http://www.kantei.go.jp/jp/content/IRYO-vaccination_data.xlsx"
 )
+df_iryo = add_cumsum(df_iryo)
 df_korei = read_kantei_vaccination_excel(
     "http://www.kantei.go.jp/jp/content/KOREI-vaccination_data.xlsx"
 )
+df_korei = add_cumsum(df_korei)
 df = (
     pd.merge(
         left=df_iryo,
@@ -41,8 +50,9 @@ df = (
 
 # 合算処理
 df["injected"] = df["injected_iryo"] + df["injected_korei"]
-df["injected_1st_total"] = df["injected_1st_iryo"] + df["injected_1st_korei"]
-df["injected_2nd_total"] = df["injected_2nd_iryo"] + df["injected_2nd_korei"]
+df["injected_1st"] = df["injected_1st_iryo"] + df["injected_1st_korei"]
+df["injected_2nd"] = df["injected_2nd_iryo"] + df["injected_2nd_korei"]
+df = add_cumsum(df)
 
 os.makedirs("data", exist_ok=True)
 df.to_csv("data/data.csv")
