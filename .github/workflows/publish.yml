@@ -29,13 +29,13 @@ jobs:
       - name: Update data
         run: ./.venv/bin/python3 ./app.py
       - name: Generate visualization html
-        run: ./.venv/bin/jupyter nbconvert --output-dir='doc' --output='index.html' --to='html' visualize.ipynb
+        run: ./.venv/bin/jupyter nbconvert --output-dir='docs' --output='index.html' --to='html' visualize.ipynb
       - name: Commit files
         run: |
           git config --local user.email "bankruptko@protonmail.com"
           git config --local user.name "bankruptko"
           git add ./data
-          git add ./doc
+          git add ./docs
           git add ./visualize.ipynb
           git commit -am "Update data and visualization"
       - name: Push changes
