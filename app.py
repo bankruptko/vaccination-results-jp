@@ -45,6 +45,7 @@ df = (
         suffixes=("_iryo", "_korei"),
     )
     .fillna(0)
+    .astype(int)
     .sort_index(ascending=True)
 )
 
