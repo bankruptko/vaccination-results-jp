@@ -21,10 +21,10 @@ def read_kantei_vaccination_excel(uri: str) -> pd.DataFrame:
 
 
 df_iryo = read_kantei_vaccination_excel(
-    "https://www.kantei.go.jp/jp/content/IRYO-vaccination_data.xlsx"
+    "http://www.kantei.go.jp/jp/content/IRYO-vaccination_data.xlsx"
 )
 df_korei = read_kantei_vaccination_excel(
-    "https://www.kantei.go.jp/jp/content/KOREI-vaccination_data.xlsx"
+    "http://www.kantei.go.jp/jp/content/KOREI-vaccination_data.xlsx"
 )
 df = (
     pd.merge(
