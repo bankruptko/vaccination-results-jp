@@ -14,7 +14,7 @@ def read_kantei_vaccination_excel(uri: str) -> pd.DataFrame:
         ],
         parse_dates=["date"],
         index_col=0,
-        skiprows=4,
+        skiprows=3,
         skipfooter=6,
     )
     return df
