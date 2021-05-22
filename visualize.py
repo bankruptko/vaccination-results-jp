@@ -15,6 +15,7 @@ plot(df=_df, title="医療従事者+高齢者 累計ワクチン摂取回数", t
 # %%
 _df = df[(df["injected_iryo"] > 0) & (df["injected_korei"] > 0)]
 plot(df=_df, title="医療従事者+高齢者 日別ワクチン摂取回数（どちらも0でない日のみ表示）")
+
 # %%
 _df = df[df["injected_iryo"] > 0]
 plot(df=_df, title="医療従事者 累計ワクチン摂取回数", type="total", category="iryo")
