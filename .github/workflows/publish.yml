@@ -4,9 +4,8 @@ on:
     - cron: 10 6 * * *
   workflow_dispatch: {}
   push:
-    paths:
-      - '*'
-      - '!data'
+    paths-ignore:
+      - 'data'
 jobs:
   publish:
     runs-on: ubuntu-latest
