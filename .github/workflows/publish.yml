@@ -31,7 +31,7 @@ jobs:
         run: |
           ./.venv/bin/jupyter nbconvert --output-dir='docs' --output='新型コロナワクチン接種実績.ipynb' --to='notebook' --execute visualize.ipynb
           ./.venv/bin/jupyter nbconvert --output-dir='docs' --output='index.html' --to='html' ./docs/新型コロナワクチン接種実績.ipynb
-          mv 新型コロナワクチン接種実績.ipynb notebook.ipynb
+          mv docs/新型コロナワクチン接種実績.ipynb docs/notebook.ipynb
       - name: Commit files
         run: |
           git config --local user.email "bankruptko@protonmail.com"
