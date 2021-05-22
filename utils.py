@@ -14,8 +14,16 @@ def plot(df: pd.DataFrame, title: str, type: str = None, category: str = None):
 
     fig = go.Figure()
     fig.layout.update({"title": title})
-    fig.layout.xaxis.update({"title": "日付"})
-    fig.layout.yaxis.update({"title": "摂取回数"})
+    fig.layout.xaxis.update(
+        {
+            "title": "日付",
+            "dtick": "D1",
+            "tickformat": "%Y/%m/%d",
+            "tickangle": -90,
+            "tickfont": {"size": 10},
+        }
+    )
+    fig.layout.yaxis.update({"title": "摂取回数（人）", "exponentformat": "none"})
     fig.add_traces(
         go.Scatter(
             x=df.index,
